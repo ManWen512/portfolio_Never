@@ -2,16 +2,16 @@ export default function Home() {
   return (
     <div>
       <div
-        className="h-[70vh] bg-fixed bg-cover bg-center flex items-center justify-center text-white text-4xl font-bold"
+        className="h-[70vh] bg-fixed sm:bg-cover bg-contain bg-center flex items-center justify-center text-white text-4xl font-bold"
         style={{
           backgroundImage: "url('/Developer.png')",
         }}
       >
-        <h1 className="text-white text-5xl font-raleway font-bold text-center">
+        <h1 className="text-white sm:text-5xl font-raleway font-bold text-center">
           Naing Lin Maung - Software Developer
         </h1>
       </div>
-      <div className="m-20 text-center">
+      <div className="m-5 sm:m-20 text-center">
         <span>
           I am a developer currently working at Feral Interactive, working on
           porting game titles to mobile platforms, primarily iOS, through a C++

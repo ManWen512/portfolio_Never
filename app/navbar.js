@@ -17,7 +17,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-black text-white px-20 py-4  pb-8 flex justify-between items-center relative">
+    <nav className="bg-black text-white px-2 sm:px-20 py-4  pb-8 flex justify-between items-center relative">
       <div className="text-xl font-bold font-raleway">
         Naing Lin Maung, Software Developer
       </div>
@@ -38,7 +38,7 @@ const Navbar = () => {
       </div>
 
       {/* Hamburger Icon */}
-      <div className="sm:hidden">
+      <div className="sm:hidden ">
         <button onClick={() => setOpen(!open)}>
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -47,7 +47,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {open && (
         <div
-          className="absolute top-16 left-0 w-full bg-black flex flex-col items-center gap-4 py-4 sm:hidden z-10
+          className="absolute mt-2 top-16 left-0 w-full bg-black flex flex-col items-center gap-4 py-4 sm:hidden z-10
         animate-slideDown"
         >
           {navLinks.map((link) => (
