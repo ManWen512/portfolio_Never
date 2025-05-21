@@ -1,55 +1,42 @@
-// app/page.js
-import fs from 'fs/promises';
-import path from 'path';
-import ReactMarkdown from 'react-markdown';
-import Image from 'next/image';
+// app/blog/page.js
+"use client";
 
-export default async function BlogPage() {
-  const filePath = path.join(process.cwd(), 'app/posts', 'post1.json');
-  const fileContent = await fs.readFile(filePath, 'utf-8');
-  const post = JSON.parse(fileContent);
+import Link from "next/link";
+import Image from "next/image";
+import { blogs } from "@/lib/blogs";
 
-  const { title, date, tags, imageUrl, body } = post;
-
+export default function BlogListPage() {
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-4xl font-bold mb-2">{title}</h1>
-      <p className="text-gray-600 mb-2">{new Date(date).toLocaleDateString()}</p>
-      <div className="flex flex-wrap gap-2 mb-4">
-        {tags.map((tag, index) => (
-          <span key={index} className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
-            {tag}
-          </span>
+    <div className="max-w-5xl mx-auto p-6">
+      <h1 className="text-4xl font-bold mb-8">All Blog Posts</h1>
+      <div className="grid gap-6">
+        {blogs.map((blog) => (
+          <Link
+            href={`/blog/${blog.slug}`}
+            key={blog.slug}
+            className="block border rounded p-4 hover:shadow-lg transition"
+          >
+            <div className="grid grid-cols-3 gap-4">
+              <Image
+                src={blog.image}
+                alt={blog.title}
+                width={800}
+                height={400}
+                className="rounded"
+              />
+              <div className="col-span-2">
+                <h2 className="text-2xl font-semibold">{blog.title}</h2>
+                <p className="text-sm text-gray-500">
+                  {blog.date} | {blog.tags.join(", ")}
+                </p>
+                <p className="mt-2 text-white">{blog.snippet}</p>
+                <p className="mt-2 text-indigo-600 font-medium">
+                  Continue reading →
+                </p>
+              </div>
+            </div>
+          </Link>
         ))}
-      </div>
-      {imageUrl && (
-        <div className="mb-6">
-          <Image
-            src={imageUrl}
-            alt={title}
-            width={800}
-            height={400}
-            className="rounded-lg"
-          />
-        </div>
-      )}
-     <div className="prose">
-        <ReactMarkdown
-          components={{
-            a: ({ href, children }) => (
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 font-semibold underline hover:text-blue-800 transition-colors"
-              >
-                {children}
-              </a>
-            ),
-          }}
-        >
-          {body}
-        </ReactMarkdown>
       </div>
     </div>
   );

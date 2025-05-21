@@ -1,7 +1,0 @@
-{
-    "title": "Understanding Edge Functions in Next.js",
-    "date": "2025-05-17",
-    "tags": ["Next.js", "Edge Functions", "JavaScript"],
-    "imageUrl": "",
-    "body": "Edge functions are server-side functions that run closer to the user, improving performance and reducing latency. Learn more about them in the [Next.js Edge Runtime documentation](https://nextjs.org/docs/app/building-your-application/routing/edge)."
-  }
