@@ -19,7 +19,7 @@ export default function ProjectListPage() {
             <h2 className="text-2xl font-semibold text-center mb-2">
               {project.title}
             </h2>
-            <div className="grid grid-cols-1 "> 
+            <div className="grid grid-cols-1 ">
               <Image
                 src={project.image}
                 alt={project.title}
@@ -27,22 +27,44 @@ export default function ProjectListPage() {
                 height={400}
                 className="rounded"
               />
-              <p className="mt-2 text-white grid grid-cols-2 gap-1">
-                <span className="font-bold flex justify-end">
-                  Release Date:{" "}
-                </span>
-                <span> {project.releaseDate}</span>
-              </p>
-              <p className="mt-2 text-white grid grid-cols-2 gap-1">
-                <span className="font-bold flex justify-end">Platforms: </span>
-                <span> {project.platforms}</span>
-              </p>
-              <p className="mt-2 text-white grid grid-cols-2 gap-1">
-                <span className="font-bold flex justify-end">
-                  Programming Languages:{" "}
-                </span>
-                <span> {project.language}</span>
-              </p>
+
+              {project.releaseDate?.length > 0 && (
+                <p className="mt-2 text-white grid grid-cols-2 gap-1">
+                  <span className="font-bold flex justify-end">
+                    Release Date:
+                  </span>
+                  <span> {project.releaseDate}</span>
+                </p>
+              )}
+
+              {project.platforms?.length > 0 && (
+                <p className="mt-2 text-white grid grid-cols-2 gap-1">
+                  <span className="font-bold flex justify-end">
+                    Platforms:{" "}
+                  </span>
+                  <span> {project.platforms}</span>
+                </p>
+              )}
+
+              {project.gameEngine?.length > 0 && (
+                <p className="mt-2 text-white grid grid-cols-2 gap-1">
+                  <span className="font-bold flex justify-end">
+                    Game Engine:{" "}
+                  </span>
+                  <span> {project.gameEngine}</span>
+                </p>
+              )}
+
+              {project.language?.length > 0 && (
+                <p className="mt-2 text-white grid grid-cols-2 gap-1">
+                  <span className="font-bold flex justify-end">
+                    {project.language.length > 1
+                      ? "Programming Language: "
+                      : "Programming Languages: "}
+                  </span>
+                  <span>{project.language}</span>
+                </p>
+              )}
 
               <p className="mt-2 text-white">{project.snippet}</p>
               <p className="mt-2 text-indigo-600 font-medium text-center">
